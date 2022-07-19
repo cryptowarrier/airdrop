@@ -10,15 +10,13 @@ contract MockToken is ERC20, Ownable {
     address public airdrop;
     uint256 public MAX_SUPPLY = 1000000000 ether;
     uint256 private mintedSupply;
-    constructor(uint256 initialSupply) ERC20("Mock Token", "MOCK") {
-       
-    }
+
+    constructor() ERC20("Mock Token", "MOCK") {}
 
     // initial function
     function setAirdropAddress(address _newAirdrop) public onlyOwner {
         airdrop = _newAirdrop;
     }
-
 
     function mint(address _to, uint256 _amount) external returns (bool) {
         if (msg.sender != airdrop) {
